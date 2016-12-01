@@ -1,4 +1,4 @@
-<form #form="ngForm" (ngSubmit)="onSubmit()" *ngIf="active" class="form-inline">
+<form (ngSubmit)="onSubmit()" #userForm="ngForm" *ngIf="active" class="form-inline">
     <div class="form-group" [ngClass]="{ 'has-error': dni.invalid && dni.touched }">
         <label for="dni">DNI</label>
         <input type="text" class="form-control" name="dni" placeholder="DNI" required #dni="ngModel" [(ngModel)]="newUser.dni"> <span class="help-block" *ngIf="dni.invalid && dni.touched">DNI es necesario</span> </div>
@@ -13,6 +13,7 @@
             <input type="checkbox" name="coche" #coche="ngModel" [(ngModel)]="newUser.coche">Coche </label>
     </div>
     <div class="form-group">
-        <button type="submit" class="btn btn-lg btn-block btn-primary" [disabled]="form.invalid" (click)="createUser()" routerLink="/"> Añadir usuario </button>
+        <button type="button" class="btn btn-lg btn-block btn-primary" (click)="createUser(newUser)" [disabled]="!userForm.form.valid" [routerLink]="['']"> Añadir usuario </button>
+
     </div>
 </form>

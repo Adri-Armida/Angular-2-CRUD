@@ -18,23 +18,22 @@ export class NuevoUsuarioComponent {
  }
 
   onSubmit() {
-    /*console.log(this.newUser);
+    this.userCreated.emit({ user : this.newUser });
 
-    this.newUser;
+    this.newUser = new User();
     this.active = false;
-    setTimeout(() => this.active = true, 0);*/
+    setTimeout(() => this.active = true, 0);
     
     
   }
 
-  createUser(){
-      console.log(this.newUser.coche);
-    if(this.newUser.coche)
-        this.newUser.coche = "si"
+  createUser(newUser){
+    if(newUser.coche)
+        newUser.coche = "si"
     else
-        this.newUser.coche = "no"
+        newUser.coche = "no"
       
-    this.userService.addUserService(this.newUser);
+    this.userService.addUserService(newUser);
       
   }
 }
